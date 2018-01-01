@@ -1,0 +1,18 @@
+{% extends "video/Navbar.html" %}
+
+{% block body %}
+<div class="container">
+    <table>
+        {% for video in all_video %}
+            <tr>
+                <a href="/video/{{ video.id }}/"><span>
+                    <img src="{{ video.thumbnail }}" alt="Image">
+                    <p class="text-muted">{{ video.title }}</p>
+{#                    <p class="text-muted">{{ video. }}</p>#}
+                </span></a>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock body %}
+

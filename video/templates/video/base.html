@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time Pass</title>
+    {% load staticfiles %}
+    <link rel="icon" href="{% static 'video/image/TimeP.png' %}">
+<link rel="stylesheet" href="{% static 'video/style.css' %}">
+
+        <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/uniwide"
+              type="text/css"/>
+
+<link rel="stylesheet" href="{% static 'video/css/bootstrap-theme.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'video/css/bootstrap.min.css' %}">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+      crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-targer="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="{% url 'video:index' %}" class="navbar-brand"
+               style="font-size: 2em;"><img src="{% static 'video/image/TimePass.png' %}" alt=""></a>
+        </div>
+
+        <!--Item-->
+        <div class="collapse navbar-collapse" id="topNavBar">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="{% url 'video:index' %}">
+                        <span class=" glyphicon glyphicon-facetime-video" aria-hidden="true"></span> &nbsp;
+                        Video</a>
+                </li>
+
+                <li class="#">
+                    {%if user.username%}
+                    <a href="{% url 'video:user_profile' user.id %}">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> &nbsp;
+                        {{user.username}}</a>
+                        {%endif%}
+                </li>
+            </ul>
+
+            <form class="navbar-form navbar-left" role="search" method="get" action="{%url 'video:discover' %}">
+                <div class="form-group">
+                    <input type="text" class="form-control glyphicon glyphicon-search " name="q" value="" placeholder = " ">
+                </div>
+                <button type="submit" class="btn btn-default" >Discover</button>
+            </form>
+
+            <ul class="nav navbar-nav navbar-right ">
+
+                <li class="#">
+                    {%if user.username%}
+                    <a href="{% url 'video:video-add' user.id %}">
+                        <span class="glyphicon glyphicon-open" aria-hidden="true"></span> &nbsp;
+                        Add Video</a>
+                        {%else%}
+                        <a href="{% url 'video:registration' %}">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> &nbsp;
+                            Sign up</a>
+                        {%endif%}
+                </li>
+
+                <li class="#">
+                    {%if user.username%}
+                    <a href={% url 'video:logout' %}>
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span> &nbsp;
+                        Logout</a>
+                    {%else%}
+                    <a href={% url 'video:login' %}>
+                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> &nbsp;
+                        Signin</a>
+                    {%endif%}
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<div class="main-body ">
+    {% block body %}
+    {% endblock %}
+</div>
+
+<nav class="navbar navbar-default col-sm-12 col-md-12 col-lg-12">
+  <div class="container">
+    <p style="text-align: center;">@This web application created by Sayeed</p>
+  </div>
+</nav>
+</body>
+</html>

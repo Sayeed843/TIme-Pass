@@ -1,0 +1,20 @@
+.navbar-brand{
+    font-family: 'UniWideRegular';
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    background-color: #a9a587;
+}
+
+table tr img{
+    height: 180px;
+    width: 280px;
+    border: 7px solid #e5d4ed;
+}
+
+table tr{
+    display: inline;
+
+}
